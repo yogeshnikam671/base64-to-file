@@ -44,7 +44,12 @@ func showHelp() {
   fmt.Println("Flags:")
   fmt.Println("  -h, --help   shows help")
   fmt.Println("  -i, --input <input_string>  takes input as a string")
-  fmt.Println("  -f, --file  <file_name>  takes input from a file")
+  fmt.Println("  -f, --file  <file_name> <decoded_file_type> takes input from a file")
+  fmt.Println("\nExamples:\n")
+  fmt.Println("  btof -i 'aGVsbG8gd29ybGQ=' (This creates a txt file with the decoded content)\n")
+  fmt.Println("  btof -f input.txt pdf (This takes base64 content from input.txt and creates a pdf file with the decoded content)\n")
+  fmt.Println("  btof -f input.txt (This takes base64 content from input.txt and creates a txt file with the decoded content)\n")
+  fmt.Println("\n")
 }
 
 func showHelpAndReturnTrueIfHelpShown() bool {
@@ -75,6 +80,8 @@ func main() {
   }
 
   var fileName string
+  var fileType string
+  fileType = "txt"
 
   flag := os.Args[1]
   if(flag == "-i" || flag == "--input") {
@@ -87,6 +94,9 @@ func main() {
 
   if(flag == "-f" || flag == "--file") {
     fileName = os.Args[2]
+    if(len(os.Args) > 3) {
+      fileType = os.Args[3]
+    }
     fmt.Println("Reading the file:", fileName)
   }
 
@@ -106,7 +116,7 @@ func main() {
   }
 
   // write to a new pdf file with the decoded content
-  decodedFileName := cliDirectory + "decoded.pdf"
+  decodedFileName := cliDirectory + "decoded." + fileType
   err = os.WriteFile(decodedFileName, decoded, 0644)  // 0 110 100 100  --> 0 rwx rwx rwx
   if err != nil {
     fmt.Println("Error while writing the decoded content to a new file:", err)
