@@ -7,6 +7,8 @@ import (
 	"slices"
 )
 
+var version = "1.0.0"
+
 func createCliDirectory() (string, error) {
   homeDir, err := os.UserHomeDir()
   if err != nil {
@@ -74,6 +76,11 @@ func main() {
     fmt.Println("Error while creating a directory:", err)
     return
   }
+  if(len(os.Args) == 2 && (os.Args[1] == "-v" || os.Args[1] == "--version")) { 
+    fmt.Println("Version:", version)
+    return
+  }
+
   isHelpShown := showHelpAndReturnTrueIfHelpShown()
   if isHelpShown {
     return
