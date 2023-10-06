@@ -1,6 +1,6 @@
 # base64-to-file
 
-**base64-to-file** is a simple command-line tool that decodes Base64-encoded content and creates a file with the provided file type extension. It can be useful when you have Base64-encoded data that you want to decode and save as a file, such as images, documents, or any other file type.
+**base64-to-file** is a simple command-line tool that decodes Base64-encoded content and creates a file with the provided file type extension. It can be useful when you have Base64-encoded data that you want to decode and save as a file, such as images, documents, or any other file type. (base64 to file converter)
 
 ## Usage
 
