@@ -23,3 +23,6 @@ btof [flag] [input]
 3. Decoding from a file without specifying the file type (defaults to txt): btof -f input.txt
    This takes base64 content from `input.txt` and creates a **txt** file with the decoded content.
 
+## Installation
+
+Run the command `brew install yogeshnikam671/btof/btof` to install this CLI tool.
